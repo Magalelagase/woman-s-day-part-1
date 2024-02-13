@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Please be my Valentine's, mabhebeza?</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .message {
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .buttons {
+    margin-top: 20px;
+  }
+  .yes-button {
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .yes-button:hover {
+    background-color: #45a049;
+  }
+  .no-button {
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .no-button:hover {
+    background-color: #d32f2f;
+  }
+  .gif-img {
+    height: 200px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Cute bear with roses" class="gif-img">
+  <h1>Please be my Valentine's, mabhebeza?</h1>
+  <div class="buttons">
+    <button class="yes-button" onclick="showMessage()">Yes</button>
+    <button class="no-button" onclick="handleNoClick()">No</button>
+  </div>
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+  let noCount = 0;
+  let yesPressed = false;
+  const yesButton = document.querySelector('.yes-button');
+  const noButton = document.querySelector('.no-button');
+  const gifImg = document.querySelector('.gif-img');
+
+  function handleNoClick() {
+    noCount++;
+    const phrases = [
+      "Haibo kahle wena",
+      "Don't make me a popay",
+      "Or a chappies :(",
+      "Vuma phela",
+      "You're breaking my heart ;(",
+    ];
+    const noButtonText = phrases[Math.min(noCount - 1, phrases.length - 1)];
+    document.getElementById("message").innerHTML = noButtonText;
+    if (noCount === 1) {
+      yesButton.style.display = 'block';
+    }
+    // Increase font size of the "No" button
+    noButton.style.fontSize = (16 + noCount*2) + 'px';
+  }
+
+  function showMessage() {
+    yesPressed = true;
+    gifImg.src = 'https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif';
+    document.getElementById("message").innerHTML = "<strong>it's an ice cream date, then :)</strong>";
+  }
+</script>
+</body>
+</html>
